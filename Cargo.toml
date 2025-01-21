@@ -19,7 +19,8 @@ thaw_components = { version = "0.3.0", path = "./thaw_components" }
 thaw_macro = { version = "0.1.0", path = "./thaw_macro" }
 thaw_utils = { version = "0.1.1", path = "./thaw_utils" }
 
-leptos = { version = "0.7.2" }
-leptos_meta = { version = "0.7.2" }
-leptos_router = { version = "0.7.2" }
-reactive_stores = { version = "0.1.2" }
+# To make work, just set branch = "any-attr-disabled":
+leptos = { version = "0.7.4", git = "https://github.com/zakstucke/leptos", branch = "main" }
+leptos_meta = { version = "0.7.4", git = "https://github.com/zakstucke/leptos", branch = "main" }
+leptos_router = { version = "0.7.4", git = "https://github.com/zakstucke/leptos", branch = "main" }
+reactive_stores = { version = "0.1.3", git = "https://github.com/zakstucke/leptos", branch = "main" }

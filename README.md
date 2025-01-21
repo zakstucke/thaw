@@ -1,39 +1,13 @@
-<p align="center" >
-    <img src="https://raw.githubusercontent.com/thaw-ui/thaw/main/logo.svg" alt="Thaw Logo" width="160px"/>
-</p>
-<h1 align="center">Thaw UI</h1>
-<p align="center">An easy to use leptos component library</p>
-<p align="center">A UI component based on Fluent Design and Leptos</p>
+AnyAttr bug repro for compilation errors with https://github.com/leptos-rs/leptos/pull/3461.
 
-## Starter Template
+To repro, from main branch, run 
+`cargo +stable build --bin demo --features ssr`
 
-You can refer to the [thaw-template](https://github.com/thaw-ui/thaw-template) repository to create a project.
+For me on macos, compiles for 10ish minutes, uses 50GB of ram, then errors with:
+`error: cannot encode offset of relocations; object file too large`
 
-## Documentation & Community
+To fix, in the workspace `Cargo.toml` change the leptos branch to `"any-attr-disabled"`, 
+see the extra commit on that branch for the minimal change that allows compilation to succeed in about 1m30s.
 
-[https://thawui.vercel.app](https://thawui.vercel.app)
-
-[Discord](https://discord.gg/VwtS7b8c)
-
-## Leptos compatibility
-
-| Crate version                                                            | Compatible Leptos version |
-| ------------------------------------------------------------------------ | ------------------------- |
-| 0.3 / [thaw-v0.3 branch](https://github.com/thaw-ui/thaw/tree/thaw-v0.3) | 0.6                       |
-| 0.4 / main branch                                                        | 0.7                       |
-
-## Resources
-
-[Fluent UI](https://react.fluentui.dev)
-
-[Pigment](https://github.com/kobaltedev/pigment)
-
-[Naive UI](https://github.com/tusen-ai/naive-ui)
-
-## Contribution
-
-Thank you to all the people who already contributed to Thaw!
-
-<a href="https://github.com/thaw-ui/thaw/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=thaw-ui/thaw" />
-</a>
+Leptos fork being depended upon:
+https://github.com/zakstucke/leptos
